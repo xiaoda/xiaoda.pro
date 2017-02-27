@@ -135,6 +135,63 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-原生js实现简单事件代理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/原生js实现简单事件代理/">原生js实现简单事件代理</a>
+    </h1>
+  
+
+        
+        <a href="/原生js实现简单事件代理/" class="archive-article-date">
+  	<time datetime="2017-02-27T16:24:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>与 jQuery 的事件代理使用相同参数</li>
+<li>区别：自定义了 delegate 函数，而非 jQuery 对象的方法</li>
+<li>只支持传入单个 class 名</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">delegate</span> (<span class="params">action, className, callback</span>) </span>&#123;</div><div class="line">    <span class="built_in">document</span>.addEventListener(action, <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (event.target.classList.contains(className.slice(<span class="number">1</span>))) &#123;</div><div class="line">            callback(event)</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">delegate(<span class="string">'click'</span>, <span class="string">'.block'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'事件 #代理#'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p><a href="/demo/delegate/">Live Demo</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/原生js实现简单事件代理/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
