@@ -1,0 +1,56 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>事件代理 Demo</title>
+    <style type="text/css">
+        .block {
+            float: left;
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
+            color: #FFF;
+            cursor: pointer;
+        }
+        .static-block {background-color: #F60;}
+        .dynamic-block {background-color: #F00;}
+    </style>
+</head>
+<body>
+    <div class="block static-block">static block</div>
+    <div class="block static-block">static block</div>
+    <script>
+        function delegate (action, className, callback) {
+            document.addEventListener(action, function (event) {
+                if (event.target.classList.contains(className.slice(1))) {
+                    callback(event)
+                }
+            })
+        }
+
+        function addBlock () {
+            var dynamicBlock = document.createElement('div')
+            dynamicBlock.classList.add('block', 'dynamic-block')
+            dynamicBlock.innerText = 'dynamic block'
+            document.body.appendChild(dynamicBlock)
+        }
+
+        Array.from(document.querySelectorAll('.block')).forEach(function (block) {
+            block.addEventListener('click', function (event) {
+                console.log('事件 @绑定@')
+            })
+        })
+
+        /*
+        * 与 jQuery 的事件代理使用相同参数
+        * 区别：自定义了 delegate 函数，而非 jQuery 对象的方法
+        * 只支持传入单个 class 名
+        */
+
+        delegate('click', '.block', function (event) {
+            console.log('事件 #代理#')
+        })
+
+        addBlock()
+    </script>
+</body>
+</html>
