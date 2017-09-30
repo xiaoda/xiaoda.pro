@@ -135,6 +135,74 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-资源拓扑图milestone" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/资源拓扑图milestone/">资源拓扑图 milestone</a>
+    </h1>
+  
+
+        
+        <a href="/资源拓扑图milestone/" class="archive-article-date">
+  	<time datetime="2017-09-30T02:13:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>拓扑图在常规的前端开发中很少用到，但在云计算的前端中就很重要了。拓扑图可以将云计算资源直观地展现在用户面前，使用户轻松地理清资源关系，还可以直接对看到的资源进行操作。在一番调研后发现，AWS、ServiceNow、VisualOps、青云等云计算服务商已有资源拓扑图或类似的应用。那么如何开发一个资源拓扑图项目呢？</p>
+<p>首先，一个资源拓扑图项目应该分为两部分。底层基础：<strong>拓扑图插件</strong>（自己开发或第三方）；上层建筑：<strong>资源拓扑图</strong>（业务所需的配置、功能）。</p>
+<p>拓扑图插件的选择是第一个重要的决定。拓扑图插件的本质是根据 js 描述的特征生成对应的拓扑图输出到页面的 canvas 元素上，并提供必要的事件和方法。当前主要有以下拓扑图插件库：</p>
+<ul>
+<li><a href="https://www.jointjs.com/" target="_blank" rel="external">jointjs</a>（收费）：功能强大，AWS 资源拓扑图使用的插件库</li>
+<li><a href="http://visjs.org/" target="_blank" rel="external">vis.js</a>：Github 星星多，文档、案例齐全，偏底层</li>
+<li><a href="http://js.cytoscape.org/" target="_blank" rel="external">cytoscape.js</a>：不错的拓扑图插件，偏底层</li>
+<li><a href="http://sigmajs.org/" target="_blank" rel="external">sigmajs</a>：侧重于密集的点线图</li>
+<li><a href="https://gojs.net/latest/index.html" target="_blank" rel="external">gojs</a>（收费）：多款预置的拓扑图类型，偏应用</li>
+</ul>
+<p>在一番比较后，我选择了 vis.js。原因是：</p>
+<ol>
+<li>开源免费库，没有使用成本和法律风险的顾虑。</li>
+<li>文档、案例齐全，更容易上手和深入。</li>
+<li>API 偏底层，便于调整基础样式和功能。</li>
+</ol>
+<p>其实在选择拓扑图插件时也有考虑过自己开发一个拓扑图插件，好处是可以完全从项目的需求入手，满足所有要求。但这么干的问题是工作量大，无法在短期内完成；此外自己开发的拓扑图插件在初期一定会有很多 bug 需要修复，这是我们的资源拓扑图项目所不能承受的。</p>
+<p>确定好拓扑图插件后就该搭建上层建筑了。这个项目最终以 jQuery 插件（Bootstrap 4 / ES 6 风格）的方式输出。目前资源拓扑图的第一版（侧重显示）已基本完成），后续功能（侧重操作）继续 fighting！</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/资源拓扑图milestone/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-精简通用的帮助方法库：xdhelper" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
