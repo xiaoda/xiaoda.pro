@@ -158,9 +158,10 @@
         <p><a href="https://github.com/xiaoda/math-object" target="_blank" rel="external">math-object</a> 是我正在开发的一个数学对象库。最初在初始化项目时，我习惯性地使用了 webpack 搭建了项目的开发环境。/public 下有一个 demo 页面，这个页面引用了项目生成的 js 库并使用其方法。有一天我突然想，既然这是一个纯粹的 js 项目，demo 页面也只是进行简单的 console.log 操作，要是能直接用 nodejs 跑起来多爽啊。OK，开始整！</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node public/index.js</div></pre></td></tr></table></figure>
 <p>直接在命令行执行上述命令。好了，一大波问题开始接近了…</p>
-<p>第一个问题：import 报错。nodejs 的模块化遵循的是 commonjs 规范，引入模块用 require 关键字；而 import 是 es6 的模块化规范，因此代码里的所有 import 报错了，需要替换为 require。题外话：因为一直使用 webpack 作为前端项目的构建工具，同时仅有简单的模块引入需求，所以对 import 和 require 并没有感觉到明显的不同，用哪个都差不多。但是最近有次体会到了两者的一个比较大的区别：import 必须在一开始引入模块，而 require 可以在需要的时候引入。当项目对引入模块的时机有要求时，require 显得更加灵活。</p>
-<p>第二个问题：{…} 报错。这是 es7 的对象、数组解构赋值的内容，当前仍处于 stage 1。其实 nodejs 从 6.0 版本开始已经支持 es6 语法了，只是支持得还不够全面。前面提到的 import 就是其中之一，这次遇到的解构赋值属于 es7 内容，nodejs 不支持是再正常不过的事了。鉴于这个语法非常好用，也为了能在项目中使用更多的 es6+ 语法，我选择了 babel-node，再也不用担心语法问题，在目前的小项目中也没有发现执行速度之类的问题。</p>
-<p>第三个问题：config / helper / util 未定义。出现问题的原因是：项目本来使用了 webpack 的 ProvidePlugin 插件，在 webpack 里配置好后，在任何文件里使用全局模块就不需要手动引入了。当项目用 nodejs 运行的时候没有 webpack 自然会出现这个问题了。在一番权衡之后我老老实实地给用到全局模块的文件手动加上了模块引用，讲道理这样确实是对的，因为使用模块前有显示的模块调用会让代码更加清楚，只是每个文件都要加显得繁琐而已。不知以后会不会有更好的解决方案。</p>
+<p>问题一：import 报错。nodejs 的模块化遵循的是 commonjs 规范，引入模块用 require 关键字；而 import 是 es6 的模块化规范，因此代码里的所有 import 报错了，需要替换为 require。题外话：因为一直使用 webpack 作为前端项目的构建工具，同时仅有简单的模块引入需求，所以对 import 和 require 并没有感觉到明显的不同，用哪个都差不多。但是最近有次体会到了两者的一个比较大的区别：import 必须在一开始引入模块，而 require 可以在需要的时候引入。当项目对引入模块的时机有要求时，require 显得更加灵活。</p>
+<p>问题二：{…} 报错。这是 es7 的对象、数组解构赋值的内容，当前仍处于 stage 1。其实 nodejs 从 6.0 版本开始已经支持 es6 语法了，只是支持得还不够全面。前面提到的 import 就是其中之一，这次遇到的解构赋值属于 es7 内容，nodejs 不支持是再正常不过的事了。鉴于这个语法非常好用，也为了能在项目中使用更多的 es6+ 语法，我选择了 babel-node，再也不用担心语法问题，在目前的小项目中也没有发现执行速度之类的问题。</p>
+<p>问题三：config / helper / util 未定义。问题出现的原因是：项目本来使用了 webpack 的 ProvidePlugin 插件，在 webpack 里配置好后，在任何文件里使用全局模块就不需要手动引入了。当项目用 nodejs 运行的时候没有 webpack 自然会出现这个问题了。在一番权衡之后我老老实实地给用到全局模块的文件手动加上了模块引用，讲道理这样确实是对的，因为使用模块前有显示的模块调用会让代码更加清楚，只是每个文件都要加显得繁琐而已。不知以后会不会有更好的解决方案。</p>
+<p>问题四：window 未定义。先前在浏览器内运行所以写了 window.C 等价于 console.log，方便打印和调试。nodejs 环境里没有全局的 window 对象，因此绑在 windows 上的属性、方法需要移除。</p>
 <p>解决了这三个问题之后，原本的一个纯前端项目就可以在 nodejs 里运行啦。开发的时候就不用打开浏览器了，甚至可以把项目放到云服务器上进行远程开发。当然用 nodejs 运行还有很多需要优化的地方，比如 console.log 的显示优化等等，待慢慢尝试和改进。</p>
 
       
