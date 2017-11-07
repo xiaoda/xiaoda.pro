@@ -135,6 +135,62 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-脱离webpack的现代化前端技术栈" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/脱离webpack的现代化前端技术栈/">脱离webpack的现代化前端技术栈</a>
+    </h1>
+  
+
+        
+        <a href="/脱离webpack的现代化前端技术栈/" class="archive-article-date">
+  	<time datetime="2017-11-07T02:01:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>从去年（2016年）开始，新的前端技术如 React / ES6 等大范围地流行起来。在实际的项目里用上 React 和 ES6 不是一件容易事，因为 React 的 JSX 需要经过编译后运行；而 ES6 作为一个全新的语言标准，Chrome / Firefox 等现代浏览器只有部分支持，IE 等过时的浏览器根本没有支持的可能。再加上前端代码压缩、合并、组件化的需求，一个牛逼的构建工具应运而生，这就是 webpack！webpack 可以用来构建现代化的纯前端项目，根据模块的调用关系加载模块代码，辅以各类插件完成 React / ES6 的编译、代码压缩合并等工作。除此之外，它还提供了一个好用的本地开发环境工具 webpack-dev-server 使开发环境下运行服务器变得简单。不仅是 React / Vue 等纯前端项目，连 Laravel 等后端框架都默认使用 webpack 作为前端构建工具。</p>
+<p>在相当长的时间里，我开发的绝大多数项目都用到了 webpack。在此期间，使用 webpack 带来的问题慢慢地出现了。</p>
+<p>一个新项目用 webpack 搭建前端架构需要不少时间。首先文件结构要先确定下来，因为这关系到 webpack 的编译目录；正确配置 path / publicPath / contentBase 等路径；所有文件分门别类，使用对应的 loader 进行编译，每个 loader 赋予恰当参数；用 CopyWebpackPlugin 等插件完成自定义的构建需求；开发初期做好的构建配置随着后期的开发根据需要不断地进行调整。总体来看，webpack 确实为我们提供了完美的前端构建工具，但需要花费大量时间在 webpack 的配置和后期调整上。当实际项目体量小但数量多时，我们可能需要不停地创建和维护构建 webpack 配置文件，这时的我们简直成了配置工程师。因此，webpack 在大型项目中更加适用，花在配置上的时间跟它带来的强大功能、便捷开发相比是划算的；在小型项目里容易得不偿失。</p>
+<p>那么有没有在使用前端框架、ES6 的同时，脱离 webpack 的解决方案呢？我认为：有。</p>
+<p>首先，前端框架选择 Vue。Vue 是今年（2017年）国内最流行的前端框架，它与 React 的优缺点比较暂且不表。它有一个大部分框架所不具备的优势：Vue 可以直接通过 script 标签引入、不需要 vue-loader 就可以应用于真实的 DOM 节点。Vue 的前端框架（以 element 为例）也可以直接通过 script 标签引入后使用。这从根本上解决了纯前端项目对 webpack 的依赖。接下来是 ES6，近些年浏览器厂商在版本的更新迭代中对 ES6 的支持越来越好，Chrome / Firefox / IE Edge 对 ES6 标准的支持程度已经能达到 97% 左右，所以直接在浏览器环境中运行 ES6 已经不是问题。如果需要在旧版本浏览器运行 ES6 或者使用 Chrome 等浏览器还不支持的 ES7 语法，可以选择对应的 polyfill。脱离 webpack 意味着不能在 js 中直接用 require / import 关键字引入模块，等价的替代方案是使用 RequireJS（需要按规范重新定义模块，比较麻烦），退一步的替代方案是用 script 标签引入可以在浏览器环境直接执行的模块文件，Vue 的组件模块需要按 Vue 规定的方式输出后使用（这方面确实不完美，但在小型项目中不是大问题，期待未来有更好的方案）。</p>
+<p>回头看前端构建的历史，webpack 的出现算得上是时势造英雄。由于当时的浏览器不支持最新的语言标准、模块引入的标准，主流前端框架必须经过编译，大量用户带宽慢如小水管，才需要开发者的兼顾和妥协。随着时间不断向前，浏览器的标准支持、前端框架的灵活程度、带宽等问题慢慢的不再是问题的时候，开发者就不再那么需要 webpack 及插件做构建了。从代码编写到浏览器显示的过程中没有多余的中间步骤，是纯粹的前端开发体验。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/脱离webpack的现代化前端技术栈/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-兼容nodejs环境的前端项目" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -162,7 +218,7 @@
 <p>问题二：{…} 报错。这是 es7 的对象、数组解构赋值的内容，当前仍处于 stage 1。其实 nodejs 从 6.0 版本开始已经支持 es6 语法了，只是支持得还不够全面。前面提到的 import 就是其中之一，这次遇到的解构赋值属于 es7 内容，nodejs 不支持是再正常不过的事了。鉴于这个语法非常好用，也为了能在项目中使用更多的 es6+ 语法，我选择了 babel-node，再也不用担心语法问题，在目前的小项目中也没有发现执行速度之类的问题。</p>
 <p>问题三：config / helper / util 未定义。问题出现的原因是：项目本来使用了 webpack 的 ProvidePlugin 插件，在 webpack 里配置好后，在任何文件里使用全局模块就不需要手动引入了。当项目用 nodejs 运行的时候没有 webpack 自然会出现这个问题了。在一番权衡之后我老老实实地给用到全局模块的文件手动加上了模块引用，讲道理这样确实是对的，因为使用模块前有显示的模块调用会让代码更加清楚，只是每个文件都要加显得繁琐而已。不知以后会不会有更好的解决方案。</p>
 <p>问题四：window 未定义。先前在浏览器内运行所以写了 window.C 等价于 console.log，方便打印和调试。nodejs 环境里没有全局的 window 对象，因此绑在 windows 上的属性、方法需要移除。</p>
-<p>解决了这三个问题之后，原本的一个纯前端项目就可以在 nodejs 里运行啦。开发的时候就不用打开浏览器了，甚至可以把项目放到云服务器上进行远程开发。当然用 nodejs 运行还有很多需要优化的地方，比如 console.log 的显示优化等等，待慢慢尝试和改进。</p>
+<p>解决了这四个问题之后，原本的一个纯前端项目就可以在 nodejs 里运行啦。开发的时候就不用打开浏览器了，甚至可以把项目放到云服务器上进行远程开发。当然用 nodejs 运行还有很多需要优化的地方，比如 console.log 的显示优化等等，待慢慢尝试和改进。</p>
 
       
 
@@ -370,65 +426,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/原生js实现简单事件代理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/hello-world/" class="archive-article-date">
-  	<time datetime="2017-02-14T08:54:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/hello-world/">展开全文 >></a>
         </p>
       
 

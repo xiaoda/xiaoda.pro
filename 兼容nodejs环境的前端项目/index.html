@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="小打的博客">
 <meta property="og:description" content="math-object 是我正在开发的一个数学对象库。最初在初始化项目时，我习惯性地使用了 webpack 搭建了项目的开发环境。/public 下有一个 demo 页面，这个页面引用了项目生成的 js 库并使用其方法。有一天我突然想，既然这是一个纯粹的 js 项目，demo 页面也只是进行简单的 console.log 操作，要是能直接用 nodejs 跑起来多爽啊。OK，开始整！
 1node">
-<meta property="og:updated_time" content="2017-10-18T02:01:25.000Z">
+<meta property="og:updated_time" content="2017-11-07T02:09:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="兼容nodejs环境的前端项目">
 <meta name="twitter:description" content="math-object 是我正在开发的一个数学对象库。最初在初始化项目时，我习惯性地使用了 webpack 搭建了项目的开发环境。/public 下有一个 demo 页面，这个页面引用了项目生成的 js 库并使用其方法。有一天我突然想，既然这是一个纯粹的 js 项目，demo 页面也只是进行简单的 console.log 操作，要是能直接用 nodejs 跑起来多爽啊。OK，开始整！
@@ -167,7 +167,7 @@
 <p>问题二：{…} 报错。这是 es7 的对象、数组解构赋值的内容，当前仍处于 stage 1。其实 nodejs 从 6.0 版本开始已经支持 es6 语法了，只是支持得还不够全面。前面提到的 import 就是其中之一，这次遇到的解构赋值属于 es7 内容，nodejs 不支持是再正常不过的事了。鉴于这个语法非常好用，也为了能在项目中使用更多的 es6+ 语法，我选择了 babel-node，再也不用担心语法问题，在目前的小项目中也没有发现执行速度之类的问题。</p>
 <p>问题三：config / helper / util 未定义。问题出现的原因是：项目本来使用了 webpack 的 ProvidePlugin 插件，在 webpack 里配置好后，在任何文件里使用全局模块就不需要手动引入了。当项目用 nodejs 运行的时候没有 webpack 自然会出现这个问题了。在一番权衡之后我老老实实地给用到全局模块的文件手动加上了模块引用，讲道理这样确实是对的，因为使用模块前有显示的模块调用会让代码更加清楚，只是每个文件都要加显得繁琐而已。不知以后会不会有更好的解决方案。</p>
 <p>问题四：window 未定义。先前在浏览器内运行所以写了 window.C 等价于 console.log，方便打印和调试。nodejs 环境里没有全局的 window 对象，因此绑在 windows 上的属性、方法需要移除。</p>
-<p>解决了这三个问题之后，原本的一个纯前端项目就可以在 nodejs 里运行啦。开发的时候就不用打开浏览器了，甚至可以把项目放到云服务器上进行远程开发。当然用 nodejs 运行还有很多需要优化的地方，比如 console.log 的显示优化等等，待慢慢尝试和改进。</p>
+<p>解决了这四个问题之后，原本的一个纯前端项目就可以在 nodejs 里运行啦。开发的时候就不用打开浏览器了，甚至可以把项目放到云服务器上进行远程开发。当然用 nodejs 运行还有很多需要优化的地方，比如 console.log 的显示优化等等，待慢慢尝试和改进。</p>
 
       
 
@@ -260,6 +260,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/脱离webpack的现代化前端技术栈/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          脱离webpack的现代化前端技术栈
+        
+      </div>
+    </a>
   
   
     <a href="/资源拓扑图milestone/" id="article-nav-older" class="article-nav-link-wrap">
