@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>主流前端框架简介</h1>
+				</section>
+
+				<section>
+					<section>
+						<h2>Web 框架比较</h2>
+						<h3>Angular / React / Vue</h3>
+					</section>
+
+					<section>
+						<h3>框架共同点</h3>
+						<ul style="font-size: 36px;">
+							<li>实现前端开发的数据与结构分离</li>
+							<li>完善的组件化设计，可复用的前端组件。</li>
+							<li>虚拟DOM，性能表现都很出色，差别不大。</li>
+							<li>必需语言：Javascript / Html / CSS；可选：ES6 / Typescript</li>
+							<li>官方提供 StarterKit，一键安装开发环境，快速开始。</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>框架差异</h3>
+						<table style="font-size: 28px;">
+							<thead>
+								<tr>
+									<th style="width: 100px;"></th>
+									<th style="width: 200px;">Angular</th>
+									<th style="width: 200px;">React</th>
+									<th style="width: 200px;">Vue</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>学习难度</td>
+									<td>困难</td>
+									<td>中等</td>
+									<td>简单</td>
+								</tr>
+								<tr>
+									<td>框架定位</td>
+									<td>完整的前端架构、工具链</td>
+									<td>仅视图层</td>
+									<td>视图层 + 必要工具</td>
+								</tr>
+								<tr>
+									<td>技术生态</td>
+									<td>丰富的自有模块</td>
+									<td>丰富的第三方插件和社区支持</td>
+									<td>较丰富的自有模块和第三方插件</td>
+								</tr>
+								<tr>
+									<td>优点</td>
+									<td>熟练后开发效率高</td>
+									<td>更好地满足自定义需求</td>
+									<td>上手快，容易理解</td>
+								</tr>
+								<tr>
+									<td>缺点</td>
+									<td>上手慢，需要理解的框架概念多</td>
+									<td>花更多时间选择插件、构建架构</td>
+									<td>语法糖多，初学者开发复杂项目容易使用不当</td>
+								</tr>
+								<tr>
+									<td>适用项目</td>
+									<td>中大型项目</td>
+									<td>各类项目</td>
+									<td>中小型项目</td>
+								</tr>
+								<tr>
+									<td>使用者</td>
+									<td>较少</td>
+									<td>多</td>
+									<td>多</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>移动端框架比较</h2>
+						<h3>Ionic / Cordova</h3>
+					</section>
+
+					<section>
+						<table style="font-size: 24px;">
+							<thead>
+								<tr>
+									<th style="width: 150px;"></th>
+									<th style="width: 300px;">Ionic</th>
+									<th style="width: 300px;">Cordova</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>跨平台 <span style="color: #E2003B;">*</span></td>
+									<td colspan="2">同一份代码，Web 页面 / iOS App / Android App</td>
+								</tr>
+								<tr>
+									<td>较原生 App 开发的优势 <span style="color: #E2003B;">*</span></td>
+									<td colspan="2">Web 技术开发速度快；跨平台；低成本</td>
+								</tr>
+								<tr>
+									<td>底层框架</td>
+									<td>Angular</td>
+									<td>无</td>
+								</tr>
+								<tr>
+									<td>UI 界面</td>
+									<td>移动设备的 UI 规范，丰富的 UI 组件，主题样式可选、可定制</td>
+									<td>无</td>
+								</tr>
+								<tr>
+									<td>使用 UI 组件的缺点</td>
+									<td>UI 组件的可定制程度低；遇到 Bug 自行修复难，需等官方修复。</td>
+									<td>无</td>
+								</tr>
+								<tr>
+									<td>系统功能调用</td>
+									<td>蓝牙、健康套件、指纹认证等，及 Cordova 插件支持的功能。</td>
+									<td>通过丰富的第三方插件调用各种系统功能</td>
+								</tr>
+								<tr>
+									<td>性能（官方）</td>
+									<td>移动端优化工作（限制 DOM 交互、移除 jQuery、触发硬件加速等）</td>
+									<td>无</td>
+								</tr>
+								<tr>
+									<td>性能（实际）<span style="color: #E2003B;">*</span></td>
+									<td colspan="2">iOS 和安卓旗舰设备上效果好，使用流畅；中低端安卓设备上效果一般，会出现卡顿。</td>
+								</tr>
+								<tr>
+									<td>开发者文档 <span style="color: #E2003B;">*</span></td>
+									<td colspan="2">丰富</td>
+								</tr>
+								<tr>
+									<td>收费服务</td>
+									<td>实时部署、错误监控等</td>
+									<td>无</td>
+								</tr>
+							</tbody>
+						</table>
+						<p><small><span style="color: #E2003B;">*</span> 表示共同点</small></p>
+					</section>
+
+					<section>
+						<h3>其它主流的移动端框架</h3>
+						<ul>
+							<li>饿了么 Mint UI (Vue)</li>
+							<li>蚂蚁金服 Ant Design Mobile (React)</li>
+							<li>Onsen UI (Angular / React / Vue)</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<h2>Q&A</h2>
+					<ul style="list-style: none;">
+						<li class="fragment">
+							<div>Q: 什么是混合开发？</div>
+							<div>A: native + web = hybrid</div>
+						</li>
+						<li class="fragment">
+							<div>Q: 如何选择框架 or 原生 or 混合？</div>
+							<div>A: 产品需求、开发人手、开发周期、后期维护</div>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Thanks !</h1>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
