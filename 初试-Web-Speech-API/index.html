@@ -6,14 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://xiaoda.github.io">
-  <title>Archives: 2017 | 小打的博客</title>
+  <title>初试 Web Speech API | 小打的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="小打的博客">
-<meta property="og:url" content="http://xiaoda.github.io/archives/2017/index.html">
+  <meta name="description" content="不久前百度宣布语音技术全系列接口永久免费开放，近年来语音技术的应用越来越广泛。在浏览器标准方面，Web Speech API 可以使 Web App 获得语音识别和语音合成能力。当前的 Web Speech API 还是一个实验技术，Chrome 已经支持。
+初试心得
+必须 https 网站或本地 localhost 域名才能使用，file 方式访问或非 https 的自定义域名不可用。  
+每次">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初试 Web Speech API">
+<meta property="og:url" content="http://xiaoda.github.io/初试-Web-Speech-API/index.html">
 <meta property="og:site_name" content="小打的博客">
+<meta property="og:description" content="不久前百度宣布语音技术全系列接口永久免费开放，近年来语音技术的应用越来越广泛。在浏览器标准方面，Web Speech API 可以使 Web App 获得语音识别和语音合成能力。当前的 Web Speech API 还是一个实验技术，Chrome 已经支持。
+初试心得
+必须 https 网站或本地 localhost 域名才能使用，file 方式访问或非 https 的自定义域名不可用。  
+每次">
+<meta property="og:updated_time" content="2017-12-25T08:00:35.829Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小打的博客">
+<meta name="twitter:title" content="初试 Web Speech API">
+<meta name="twitter:description" content="不久前百度宣布语音技术全系列接口永久免费开放，近年来语音技术的应用越来越广泛。在浏览器标准方面，Web Speech API 可以使 Web App 获得语音识别和语音合成能力。当前的 Web Speech API 还是一个实验技术，Chrome 已经支持。
+初试心得
+必须 https 网站或本地 localhost 域名才能使用，file 方式访问或非 https 的自定义域名不可用。  
+每次">
   
   
     <link rel="icon" href="/favicon.png">
@@ -129,238 +142,124 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-初试-Web-Speech-API" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      初试 Web Speech API
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/初试-Web-Speech-API/" class="archive-article-date">
+
+        
+        <a href="/初试-Web-Speech-API/" class="archive-article-date">
   	<time datetime="2017-12-25T03:44:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-25</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/初试-Web-Speech-API/">初试 Web Speech API</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>不久前百度宣布语音技术全系列接口永久免费开放，近年来语音技术的应用越来越广泛。在浏览器标准方面，<a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API" target="_blank" rel="external">Web Speech API</a> 可以使 Web App 获得语音识别和语音合成能力。当前的 Web Speech API 还是一个实验技术，Chrome 已经支持。</p>
+<h3 id="初试心得"><a href="#初试心得" class="headerlink" title="初试心得"></a>初试心得</h3><ol>
+<li>必须 https 网站或本地 localhost 域名才能使用，file 方式访问或非 https 的自定义域名不可用。  </li>
+<li>每次调用 API 时，Chrome 会在后台访问远程的语音相关接口，因此必须保证连接<strong>全球互联网</strong>。</li>
+<li>识别语言可选择，选择中文时可识别中英文混合语音。</li>
+<li>识别成功后返回文字，同时返回信心值。</li>
+</ol>
+<p><a href="/demo/speech/">Live Demo</a></p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://xiaoda.github.io/初试-Web-Speech-API/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/浏览器缓存问题解决办法/" class="archive-article-date">
-  	<time datetime="2017-12-25T02:32:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-25</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/浏览器缓存问题解决办法/">浏览器缓存问题解决办法</a>
-    </h1>
+  
+    <a href="/浏览器缓存问题解决办法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">浏览器缓存问题解决办法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/主流前端框架简介（PPT）/" class="archive-article-date">
-  	<time datetime="2017-11-29T07:53:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/主流前端框架简介（PPT）/">主流前端框架简介（PPT）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/脱离webpack的现代化前端技术栈/" class="archive-article-date">
-  	<time datetime="2017-11-07T02:01:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/脱离webpack的现代化前端技术栈/">脱离 webpack 的现代化前端技术栈</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/兼容nodejs环境的前端项目/" class="archive-article-date">
-  	<time datetime="2017-10-15T07:50:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/兼容nodejs环境的前端项目/">兼容 nodejs 环境的前端项目</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/资源拓扑图milestone/" class="archive-article-date">
-  	<time datetime="2017-09-30T02:13:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/资源拓扑图milestone/">资源拓扑图 milestone</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/精简通用的帮助方法库：xdhelper/" class="archive-article-date">
-  	<time datetime="2017-06-09T03:44:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/精简通用的帮助方法库：xdhelper/">精简通用的帮助方法库：xdhelper</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/原生js实现简单事件代理/" class="archive-article-date">
-  	<time datetime="2017-02-27T16:24:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/原生js实现简单事件代理/">原生 js 实现简单事件代理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -383,8 +282,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
