@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>中文语音</title>
+  <style>
+    :root {
+      --margin: 15px;
+      --font-sm: 14px;
+      --color-primary: #F60;
+      --color-primary-light: #FF8533;
+      --color-tips: #AAA;
+    }
+
+    * {margin: 0; padding: 0;}
+    body {padding: var(--margin) 0;}
+    .layout {width: 1024px; margin: 0 auto;}
+    .row {margin-bottom: var(--margin);}
+    .tips {
+      font-size: var(--font-sm);
+      color: var(--color-tips);
+    }
+    .record-btn {
+      --size: 120px;
+      position: relative;
+      width: var(--size);
+      height: var(--size);
+      border: 5px solid var(--color-primary-light);
+      border-radius: 50%;
+      background-color: var(--color-primary);
+    }
+    .record-btn .record-receiver {
+      position: absolute;
+      width: 8px;
+      border-radius: 5px;
+      background-color: #FFF;
+    }
+    .record-btn .record-receiver:nth-child(1),
+    .record-btn .record-receiver:nth-child(4) {
+      top: 45px;
+      height: 30px;
+    }
+    .record-btn .record-receiver:nth-child(2),
+    .record-btn .record-receiver:nth-child(3) {
+      top: 30px;
+      height: 60px;
+    }
+    .record-btn .record-receiver:nth-child(1) {left: 26px;}
+    .record-btn .record-receiver:nth-child(2) {left: 46px;}
+    .record-btn .record-receiver:nth-child(3) {left: 66px;}
+    .record-btn .record-receiver:nth-child(4) {left: 86px;}
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <div class="row">
+      <span class="tips">请确认连接到全球互联网并使用 Chrome 访问</span>
+    </div>
+
+    <div class="row">
+      状态：
+      <span class="status">fine</span>
+    </div>
+
+    <div class="row">
+      结果：
+      <span class="speech-text"></span>
+    </div>
+
+    <div class="row" style="margin-top: 30px;">
+      <div class="record-btn">
+        <div class="record-receiver"></div>
+        <div class="record-receiver"></div>
+        <div class="record-receiver"></div>
+        <div class="record-receiver"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    class SpeechProcessor {
+      constructor (options) {
+        var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
+        var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
+        var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
+
+        let {
+          lang = 'zh',
+          words = [],
+          keyboard = [],
+          elements = {},
+          callbacks = {}
+        } = options
+        let grammar = `#JSGF V1.0; grammar words; public <word> = ${words.join(' | ')} ;`
+        let speechRecognitionList = new SpeechGrammarList()
+
+        speechRecognitionList.addFromString(grammar, 1)
+
+        this.recognition = new SpeechRecognition()
+        this.recognition.grammars = speechRecognitionList
+        this.recognition.continuous = false
+        this.recognition.lang = lang
+        this.recognition.interimResults = false
+        this.recognition.maxAlternatives = 1
+        this.keyboard = keyboard
+        this.selectors = elements
+        this.callbacks = callbacks
+        this.status = {
+          recording: false
+        }
+
+        this.initEvents()
+      }
+
+      initEvents () {
+        $(this.selectors.recordBtn).on('click', () => {
+          this.startRecording()
+        })
+
+        $(document).on('click', (event) => {
+          if ($(event.target).closest(this.selectors.recordBtn).length) return
+
+          this.stopRecording()
+        })
+
+        $(document).on('keypress', (event) => {
+          if (!this.keyboard.includes(event.keyCode)) return
+
+          if (this.status.recording) this.stopRecording()
+          else this.startRecording()
+        })
+
+        this.recognition.onspeechend = (event) => {
+          this.stopRecording()
+
+          try {
+            this.callbacks.speechend(event)
+          } catch (e) {}
+        }
+
+        this.recognition.onresult = (event) => {
+          console.log(`confidence: ${event.results[0][0].confidence}`)
+
+          try {
+            this.callbacks.result(event)
+          } catch (e) {}
+        }
+
+        this.recognition.onnomatch = (event) => {
+          try {
+            this.callbacks.nomatch(event)
+          } catch (e) {}
+        }
+
+        this.recognition.onerror = (event) => {
+          try {
+            this.callbacks.error(event)
+          } catch (e) {}
+        }
+      }
+
+      startRecording () {
+        if (this.status.recording) return
+
+        this.recognition.start()
+        this.status.recording = true
+      }
+
+      stopRecording () {
+        if (!this.status.recording) return
+
+        this.recognition.stop()
+        this.status.recording = false
+      }
+    }
+
+    class PageView {
+      constructor (options) {
+        let {
+          elements = {}
+        } = options
+
+        this.selectors = elements
+      }
+
+      showResult (text) {
+        this.clearContent()
+
+        $(this.selectors.status).text('fine')
+        $(this.selectors.result).text(text)
+      }
+
+      showNomatch () {
+        this.clearContent()
+
+        $(this.selectors.status).text('no match')
+      }
+
+      showError (error) {
+        this.clearContent()
+
+        $(this.selectors.status).text(`error: ${error}`)
+      }
+
+      clearContent () {
+        $(this.selectors.status).text(null)
+        $(this.selectors.result).text(null)
+      }
+    }
+
+    let pageView = new PageView({
+      elements: {
+        status: '.status',
+        result: '.speech-text'
+      }
+    })
+
+    let speechProcessor = new SpeechProcessor({
+      lang: 'zh',
+      words: [
+        '微信', 'QQ', '支付宝', '微博',
+        'Chrome', '知乎', '摩拜', 'ofo',
+        '饿了么', '京东', '优酷', '炉石'
+      ],
+      keyboard: [32],
+      elements: {
+        recordBtn: '.record-btn'
+      },
+      callbacks: {
+        result (event) {
+          let last = event.results.length - 1
+          let text = event.results[last][0].transcript
+
+          pageView.showResult(text)
+        },
+        nomatch () {
+          pageView.showNomatch()
+        },
+        error (event) {
+          pageView.showError(event.error)
+        }
+      }
+    })
+  </script>
+</body>
+</html>
