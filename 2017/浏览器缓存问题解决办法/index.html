@@ -6,18 +6,32 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://xiaoda.github.io">
-  <title>脱离 webpack 的现代化前端技术栈 | 小打的博客</title>
+  <title>浏览器缓存问题解决办法 | 小打的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="从去年（2016年）开始，新的前端技术如 React / ES6 等大范围地流行起来。在实际的项目里用上 React 和 ES6 不是一件容易事，因为 React 的 JSX 需要经过编译后运行；而 ES6 作为一个全新的语言标准，Chrome / Firefox 等现代浏览器只有部分支持，IE 等过时的浏览器根本没有支持的可能。再加上前端代码压缩、合并、组件化的需求，一个牛逼的构建工具应运而生，">
+  <meta name="description" content="HTTP 缓存 | Web | Google Developers 详细解释了现代浏览器的缓存方法和策略。
+缓存策略图
+如希望浏览器不做任何缓存以保证访问文件的正确，必须指定 no-store。以 Nginx 为例：
+123location ~ .*/.html$ &amp;#123;    add_header Cache-Control no-store;&amp;#125;
+PS: 圣诞节快乐！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="脱离 webpack 的现代化前端技术栈">
-<meta property="og:url" content="http://xiaoda.github.io/脱离webpack的现代化前端技术栈/index.html">
+<meta property="og:title" content="浏览器缓存问题解决办法">
+<meta property="og:url" content="http://xiaoda.github.io/2017/浏览器缓存问题解决办法/index.html">
 <meta property="og:site_name" content="小打的博客">
-<meta property="og:description" content="从去年（2016年）开始，新的前端技术如 React / ES6 等大范围地流行起来。在实际的项目里用上 React 和 ES6 不是一件容易事，因为 React 的 JSX 需要经过编译后运行；而 ES6 作为一个全新的语言标准，Chrome / Firefox 等现代浏览器只有部分支持，IE 等过时的浏览器根本没有支持的可能。再加上前端代码压缩、合并、组件化的需求，一个牛逼的构建工具应运而生，">
-<meta property="og:updated_time" content="2017-11-29T06:45:22.000Z">
+<meta property="og:description" content="HTTP 缓存 | Web | Google Developers 详细解释了现代浏览器的缓存方法和策略。
+缓存策略图
+如希望浏览器不做任何缓存以保证访问文件的正确，必须指定 no-store。以 Nginx 为例：
+123location ~ .*/.html$ &amp;#123;    add_header Cache-Control no-store;&amp;#125;
+PS: 圣诞节快乐！">
+<meta property="og:image" content="http://xiaoda.github.io/img/http-cache-decision-tree.png">
+<meta property="og:updated_time" content="2017-12-25T06:37:11.773Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="脱离 webpack 的现代化前端技术栈">
-<meta name="twitter:description" content="从去年（2016年）开始，新的前端技术如 React / ES6 等大范围地流行起来。在实际的项目里用上 React 和 ES6 不是一件容易事，因为 React 的 JSX 需要经过编译后运行；而 ES6 作为一个全新的语言标准，Chrome / Firefox 等现代浏览器只有部分支持，IE 等过时的浏览器根本没有支持的可能。再加上前端代码压缩、合并、组件化的需求，一个牛逼的构建工具应运而生，">
+<meta name="twitter:title" content="浏览器缓存问题解决办法">
+<meta name="twitter:description" content="HTTP 缓存 | Web | Google Developers 详细解释了现代浏览器的缓存方法和策略。
+缓存策略图
+如希望浏览器不做任何缓存以保证访问文件的正确，必须指定 no-store。以 Nginx 为例：
+123location ~ .*/.html$ &amp;#123;    add_header Cache-Control no-store;&amp;#125;
+PS: 圣诞节快乐！">
+<meta name="twitter:image" content="http://xiaoda.github.io/img/http-cache-decision-tree.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -133,32 +147,31 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-脱离webpack的现代化前端技术栈" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-浏览器缓存问题解决办法" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      脱离 webpack 的现代化前端技术栈
+      浏览器缓存问题解决办法
     </h1>
   
 
         
-        <a href="/脱离webpack的现代化前端技术栈/" class="archive-article-date">
-  	<time datetime="2017-11-07T02:01:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-07</time>
+        <a href="/2017/浏览器缓存问题解决办法/" class="archive-article-date">
+  	<time datetime="2017-12-25T02:32:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>从去年（2016年）开始，新的前端技术如 React / ES6 等大范围地流行起来。在实际的项目里用上 React 和 ES6 不是一件容易事，因为 React 的 JSX 需要经过编译后运行；而 ES6 作为一个全新的语言标准，Chrome / Firefox 等现代浏览器只有部分支持，IE 等过时的浏览器根本没有支持的可能。再加上前端代码压缩、合并、组件化的需求，一个牛逼的构建工具应运而生，这就是 webpack！webpack 可以用来构建现代化的纯前端项目，根据模块的调用关系加载模块代码，辅以各类插件完成 React / ES6 的编译、代码压缩合并等工作。除此之外，它还提供了一个好用的本地开发环境工具 webpack-dev-server 使开发环境下运行服务器变得简单。不仅是 React / Vue 等纯前端项目，连 Laravel 等后端框架都默认使用 webpack 作为前端构建工具。</p>
-<p>在相当长的时间里，我开发的绝大多数项目都用到了 webpack。在此期间，使用 webpack 带来的问题慢慢地出现了。</p>
-<p>一个新项目用 webpack 搭建前端架构需要不少时间。首先文件结构要先确定下来，因为这关系到 webpack 的编译目录；正确配置 path / publicPath / contentBase 等路径；所有文件分门别类，使用对应的 loader 进行编译，每个 loader 赋予恰当参数；用 CopyWebpackPlugin 等插件完成自定义的构建需求；开发初期做好的构建配置随着后期的开发根据需要不断地进行调整。总体来看，webpack 确实为我们提供了完美的前端构建工具，但需要花费大量时间在 webpack 的配置和后期调整上。当实际项目体量小但数量多时，我们可能需要不停地创建和维护构建 webpack 配置文件，这时的我们简直成了配置工程师。因此，webpack 在大型项目中更加适用，花在配置上的时间跟它带来的强大功能、便捷开发相比是划算的；在小型项目里容易得不偿失。</p>
-<p>那么有没有在使用前端框架、ES6 的同时，脱离 webpack 的解决方案呢？我认为：有。</p>
-<p>首先，前端框架选择 Vue。Vue 是今年（2017年）国内最流行的前端框架，它与 React 的优缺点比较暂且不表。它有一个大部分框架所不具备的优势：Vue 可以直接通过 script 标签引入、不需要 vue-loader 就可以应用于真实的 DOM 节点。Vue 的前端框架（以 element 为例）也可以直接通过 script 标签引入后使用。这从根本上解决了纯前端项目对 webpack 的依赖。接下来是 ES6，近些年浏览器厂商在版本的更新迭代中对 ES6 的支持越来越好，Chrome / Firefox / IE Edge 对 ES6 标准的支持程度已经能达到 97% 左右，所以直接在浏览器环境中运行 ES6 已经不是问题。如果需要在旧版本浏览器运行 ES6 或者使用 Chrome 等浏览器还不支持的 ES7 语法，可以选择对应的 polyfill。脱离 webpack 意味着不能在 js 中直接用 require / import 关键字引入模块，等价的替代方案是使用 RequireJS（需要按规范重新定义模块，比较麻烦），退一步的替代方案是用 script 标签引入可以在浏览器环境直接执行的模块文件，Vue 的组件模块需要按 Vue 规定的方式输出后使用（这方面确实不完美，但在小型项目中不是大问题，期待未来有更好的方案）。</p>
-<p>回头看前端构建的历史，webpack 的出现算得上是时势造英雄。由于当时的浏览器不支持最新的语言标准、模块引入的标准，主流前端框架必须经过编译，大量用户带宽慢如小水管，才需要开发者的兼顾和妥协。随着时间不断向前，浏览器的标准支持、前端框架的灵活程度、带宽等问题慢慢的不再是问题的时候，开发者就不再那么需要 webpack 及插件做构建了。从代码编写到浏览器显示的过程中没有多余的中间步骤，是纯粹的前端开发体验。</p>
+        <p><a href="https://developers.google.cn/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=zh-cn" target="_blank" rel="external">HTTP 缓存 | Web | Google Developers</a> 详细解释了现代浏览器的缓存方法和策略。</p>
+<h3 id="缓存策略图"><a href="#缓存策略图" class="headerlink" title="缓存策略图"></a>缓存策略图</h3><p><img src="/img/http-cache-decision-tree.png" alt="缓存策略图"></p>
+<p>如希望浏览器不做任何缓存以保证访问文件的正确，必须指定 no-store。以 Nginx 为例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">location ~ .*/.html$ &#123;</div><div class="line">    add_header Cache-Control no-store;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><em>PS: 圣诞节快乐！</em></p>
 
       
 
@@ -217,7 +230,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://xiaoda.github.io/脱离webpack的现代化前端技术栈/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://xiaoda.github.io/2017/浏览器缓存问题解决办法/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -231,18 +244,18 @@
   
 <nav id="article-nav">
   
-    <a href="/主流前端框架简介（PPT）/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/初试-Web-Speech-API/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          主流前端框架简介（PPT）
+          初试 Web Speech API
         
       </div>
     </a>
   
   
-    <a href="/兼容nodejs环境的前端项目/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">兼容 nodejs 环境的前端项目</div>
+    <a href="/2017/主流前端框架简介（PPT）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">主流前端框架简介（PPT）</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -267,7 +280,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 xiaoda
+    		&copy; 2018 xiaoda
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

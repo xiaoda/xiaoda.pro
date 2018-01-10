@@ -6,21 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://xiaoda.github.io">
-  <title>资源拓扑图 milestone | 小打的博客</title>
+  <title>Archives: 2018/1 | 小打的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="拓扑图在常规的前端开发中很少用到，但在云计算的前端中就很重要了。拓扑图可以将云计算资源直观地展现在用户面前，使用户轻松地理清资源关系，还可以直接对看到的资源进行操作。在一番调研后发现，AWS、ServiceNow、VisualOps、青云等云计算服务商已有资源拓扑图或类似的应用。那么如何开发一个资源拓扑图项目呢？
-首先，一个资源拓扑图项目应该分为两部分。底层基础：拓扑图插件（自己开发或第三方）；上">
-<meta property="og:type" content="article">
-<meta property="og:title" content="资源拓扑图 milestone">
-<meta property="og:url" content="http://xiaoda.github.io/资源拓扑图milestone/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="小打的博客">
+<meta property="og:url" content="http://xiaoda.github.io/archives/2018/01/index.html">
 <meta property="og:site_name" content="小打的博客">
-<meta property="og:description" content="拓扑图在常规的前端开发中很少用到，但在云计算的前端中就很重要了。拓扑图可以将云计算资源直观地展现在用户面前，使用户轻松地理清资源关系，还可以直接对看到的资源进行操作。在一番调研后发现，AWS、ServiceNow、VisualOps、青云等云计算服务商已有资源拓扑图或类似的应用。那么如何开发一个资源拓扑图项目呢？
-首先，一个资源拓扑图项目应该分为两部分。底层基础：拓扑图插件（自己开发或第三方）；上">
-<meta property="og:updated_time" content="2017-09-30T06:21:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="资源拓扑图 milestone">
-<meta name="twitter:description" content="拓扑图在常规的前端开发中很少用到，但在云计算的前端中就很重要了。拓扑图可以将云计算资源直观地展现在用户面前，使用户轻松地理清资源关系，还可以直接对看到的资源进行操作。在一番调研后发现，AWS、ServiceNow、VisualOps、青云等云计算服务商已有资源拓扑图或类似的应用。那么如何开发一个资源拓扑图项目呢？
-首先，一个资源拓扑图项目应该分为两部分。底层基础：拓扑图插件（自己开发或第三方）；上">
+<meta name="twitter:title" content="小打的博客">
   
   
     <link rel="icon" href="/favicon.png">
@@ -136,143 +129,49 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-资源拓扑图milestone" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      资源拓扑图 milestone
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/自制-iPhone-价格走势图/" class="archive-article-date">
+  	<time datetime="2018-01-10T02:56:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-10</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/自制-iPhone-价格走势图/">自制 iPhone 价格走势图</a>
     </h1>
   
 
-        
-        <a href="/资源拓扑图milestone/" class="archive-article-date">
-  	<time datetime="2017-09-30T02:13:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>拓扑图在常规的前端开发中很少用到，但在云计算的前端中就很重要了。拓扑图可以将云计算资源直观地展现在用户面前，使用户轻松地理清资源关系，还可以直接对看到的资源进行操作。在一番调研后发现，AWS、ServiceNow、VisualOps、青云等云计算服务商已有资源拓扑图或类似的应用。那么如何开发一个资源拓扑图项目呢？</p>
-<p>首先，一个资源拓扑图项目应该分为两部分。底层基础：<strong>拓扑图插件</strong>（自己开发或第三方）；上层建筑：<strong>资源拓扑图</strong>（业务所需的配置、功能）。</p>
-<p>拓扑图插件的选择是第一个重要的决定。拓扑图插件的本质是根据 js 描述的特征生成对应的拓扑图输出到页面的 canvas 元素上，并提供必要的事件和方法。当前主要有以下拓扑图插件库：</p>
-<ul>
-<li><a href="https://www.jointjs.com/" target="_blank" rel="external">jointjs</a>（收费）：功能强大，AWS 资源拓扑图使用的插件库</li>
-<li><a href="http://visjs.org/" target="_blank" rel="external">vis.js</a>：Github 星星多，文档、案例齐全，偏底层</li>
-<li><a href="http://js.cytoscape.org/" target="_blank" rel="external">cytoscape.js</a>：不错的拓扑图插件，偏底层</li>
-<li><a href="http://sigmajs.org/" target="_blank" rel="external">sigmajs</a>：侧重于密集的点线图</li>
-<li><a href="https://gojs.net/latest/index.html" target="_blank" rel="external">gojs</a>（收费）：多款预置的拓扑图类型，偏应用</li>
-</ul>
-<p>在一番比较后，我选择了 vis.js。原因是：</p>
-<ol>
-<li>开源免费库，没有使用成本和法律风险的顾虑。</li>
-<li>文档、案例齐全，更容易上手和深入。</li>
-<li>API 偏底层，便于调整基础样式和功能。</li>
-</ol>
-<p>其实在选择拓扑图插件时也有考虑过自己开发一个拓扑图插件，好处是可以完全从项目的需求入手，满足所有要求。但这么干的问题是工作量大，无法在短期内完成；此外自己开发的拓扑图插件在初期一定会有很多 bug 需要修复，这是我们的资源拓扑图项目所不能承受的。</p>
-<p>确定好拓扑图插件后就该搭建上层建筑了。在几周的开发之后，该项目以 jQuery 插件（Bootstrap 4 / ES 6 风格）的方式完成第一版并输出，后续会支持更多操作。</p>
+        <div class="article-info info-on-right">
+          
+          
 
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://xiaoda.github.io/资源拓扑图milestone/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/兼容nodejs环境的前端项目/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          兼容 nodejs 环境的前端项目
-        
-      </div>
-    </a>
   
   
-    <a href="/精简通用的帮助方法库：xdhelper/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">精简通用的帮助方法库：xdhelper</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-
-  
-    <div class="duoshuo"></div>
+    </div></section>
   
 
-
+    
 
 
           </div>
@@ -282,7 +181,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 xiaoda
+    		&copy; 2018 xiaoda
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -295,8 +194,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
