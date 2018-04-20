@@ -139,6 +139,70 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-xdhelper-重构小记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/xdhelper-重构小记/">xdhelper 重构小记</a>
+    </h1>
+  
+
+        
+        <a href="/2018/xdhelper-重构小记/" class="archive-article-date">
+  	<time datetime="2018-04-20T03:29:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://github.com/xiaoda/xdhelper" target="_blank" rel="external">xdhelper</a> 是我发布的第一个开源库，激情满满，问题也多多。趁着有时间、有需求，重构一版，解决明显的问题。变更如下：</p>
+<ol>
+<li>babel preset 由 latest 升级为 env</li>
+<li>散落在根目录下的三个 webpack 配置文件移动至新建的 webpack 文件夹</li>
+<li>修改 webpack 配置：去掉通过 ProvidePlugin 实现的全局变量、放弃模块文件的单独输出</li>
+<li>直接在根目录而不是 dist 文件夹输出编译后的文件</li>
+<li>使用 require 代替 import 引入模块</li>
+<li>移除 mask 和 support 模块</li>
+<li>规范方法名称，名词使用单数形式</li>
+<li>新增、更新、移除部分方法</li>
+<li>更新测试用例</li>
+<li>使用 github wiki 托管 API 文档</li>
+<li>重新编辑、精简 readme</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/xdhelper-重构小记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-自制-iPhone-价格走势图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
