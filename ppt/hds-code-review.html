@@ -1,0 +1,256 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>赋能 Code Review</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css">
+    <style>
+      .h1 {font-size: 72px; margin-bottom: 10px;}
+      .h2 {font-size: 64px; margin-bottom: 10px;}
+      .small-screen-shot {width: 85%;}
+      .screen-shot {width: 75%;}
+      .big-screen-shot {width: 60%;}
+      .large-screen-shot {width: 50%;}
+    </style>
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <div class="h1">Code Review</div>
+          <div>赋能代码浅析</div>
+        </section>
+
+        <section>
+          <div class="h1">EE Client H5</div>
+          <div>消费者端 - 前端部分（H5版）</div>
+          <div>dev-5.24 分支</div>
+          <div>以 ShopsList.vue 为例</div>
+        </section>
+
+        <section>
+          <section>
+            <div class="h2">shopModel.shopList()</div>
+            <ol class="fragment" style="width: 50%;">
+              <li>7次直接调用</li>
+              <li>主要逻辑相似，复用性差</li>
+              <li>维护困难</li>
+            </ol>
+          </section>
+
+          <section>
+            <img class="screen-shot" src="images/shoplist.png">
+            <img class="screen-shot" src="images/shoplist2.png">
+          </section>
+
+          <section>
+            <img class="screen-shot" src="images/shoplist3.png">
+            <img class="screen-shot" src="images/shoplist4.png">
+          </section>
+
+          <section>
+            <img class="screen-shot" src="images/shoplist5.png">
+            <img class="screen-shot" src="images/shoplist6.png">
+          </section>
+
+          <section>
+            <img class="screen-shot" src="images/shoplist7.png">
+          </section>
+
+          <section>
+            <div class="h2">Advice</div>
+            <ol>
+              <li class="fragment">由一个公共方法直接调用 shopModel.shopList()，其它地方调用该公共方法。</li>
+              <li class="fragment">传入自定义 params 参数，返回 promise 对象。</li>
+              <li class="fragment">通用逻辑写在该公共方法内，不同部分用 if 判断或各自在 .then 中写。</li>
+            </ol>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <div class="h1">if 优化</div>
+          </section>
+
+          <section>
+            <img class="big-screen-shot" src="images/if.png">
+          </section>
+
+          <section>
+            <pre><code class="javascript">
+switch (item) {
+  case 'reputation':
+    this.params.sort = this.refreshSort = 'reputation'
+    break
+  case 'time':
+    this.params.sort = this.refreshSort = 'time'
+    break
+  // ...
+  default:
+    this.params.sort = this.refreshSort = ''
+}
+this.operationFilter[2].name = industry
+            </code></pre>
+            <div class="fragment">
+              <div>And More...</div>
+              <pre><code class="javascript">
+this.params.sort = this.refreshSort =
+  ['reputation', 'time'].includes(item) ? item : ''
+this.operationFilter[2].name = industry
+              </code></pre>
+            </div>
+          </section>
+
+          <section>
+            <img class="large-screen-shot" src="images/if2.png">
+          </section>
+
+          <section>
+            <div class="h2">Advice</div>
+            <pre><code class="javascript">
+this.params.is_parking =
+  arr.includes('is_parking') ? 1 : ''
+this.params.refreshIsParking =
+  arr.includes('is_parking') ? 1 : ''
+this.params.is_wifi =
+  arr.includes('is_wifi') ? 1 : ''
+this.params.refreshIsWifi =
+  arr.includes('is_wifi') ? 1 : ''
+            </code></pre>
+          </section>
+
+          <section>
+            <img src="images/iftrue.png">
+            <div class="fragment">
+              <div class="h2">Advice</div>
+              <pre><code class="javascript">
+if (item.check) {
+  arr.push(item.id)
+}
+              </code></pre>
+            </div>
+          </section>
+
+          <section>
+            <img src="images/ifsequence.png">
+            <div class="fragment">
+              <div class="h2">Advice</div>
+              <pre><code class="javascript">
+if (this.$route.params.tradeId) {
+  this.params.tradeId = this.$route.params.tradeId
+  this.refreshId = this.$route.params.tradeId
+} else {
+  this.refreshId = ''
+  this.params.tradeId = ''
+}
+              </code></pre>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          <div class="h1">'true' & 'false'</div>
+          <ul>
+            <li class="fragment">true & false</li>
+            <li class="fragment">1 & 0</li>
+          </ul>
+        </section>
+
+        <section>
+          <section>
+            <div class="h1">=== 和 includes</div>
+            <img class="" src="images/includes.png">
+          </section>
+          <section>
+            <div class="h2">Advice</div>
+            <pre><code class="javascript">
+if (['', undefined].includes(this.params[key])) {
+  delete this.params[key]
+}
+            </code></pre>
+            <div class="fragment">
+              <div>And More...</div>
+              <pre><code class="javascript">
+if (!this.params[key]) {
+  delete this.params[key]
+}
+              </code></pre>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          <img src="images/ofundefinederror.png">
+          <div class="fragment">
+            <div class="h2">Fixed</div>
+            <img src="images/ofundefined.png">
+          </div>
+        </section>
+
+        <section>
+          <section>
+            <img src="images/variable.png">
+          </section>
+
+          <section>
+            <pre><code class="javascript">
+let height
+if (
+  this.filterShow || this.filterRegionShow ||
+  this.filterScreenShow || this.maskShow
+) {
+  height = '100vh'
+} else {
+  height = ''
+}
+document.querySelector('.wrapper-refresh').style.height
+  = height
+            </code></pre>
+            <div class="fragment">
+              <div>Or</div>
+              <pre><code class="javascript">
+document.querySelector('.wrapper-refresh').style.height =
+  this.filterShow || this.filterRegionShow ||
+  this.filterScreenShow || this.maskShow ?
+  '100vh' : ''
+              </code></pre>
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true }
+        ]
+      });
+    </script>
+  </body>
+</html>
